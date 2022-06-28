@@ -59,9 +59,9 @@ public class InversMatriks {
 
                 System.out.print(arrayInput[i][j]);
 				
-				if (j < kolom - 1) {
-					System.out.print(" ");
-				}
+			if (j < kolom - 1) {
+				System.out.print(" ");
+			}
 
             }
 
@@ -87,9 +87,9 @@ public class InversMatriks {
 
                 System.out.print(arrayInput[i][j]);
 				
-				if (j < kolom - 1) {
-					System.out.print(" ");
-				}
+			if (j < kolom - 1) {
+				System.out.print(" ");
+			}
 
             }
 
