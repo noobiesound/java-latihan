@@ -147,7 +147,6 @@ public class KonversiBilangan {
 						for (i = 0; i < count_8; i++) {
 							
 							if (pString_8 >= 3) {
-								
 								tempStr[i] = bil.substring((pString_8 - 3), (pString_8));
 								pString_8 -= 3;
 								
@@ -175,7 +174,6 @@ public class KonversiBilangan {
 						for (i = 0; i < count_16; i++) {
 							
 							if (pString_16 >= 4) {
-								
 								tempStr[i] = bil.substring((pString_16 - 4), (pString_16));
 								pString_16 -= 4;
 								
@@ -351,7 +349,8 @@ public class KonversiBilangan {
 		
 	}
 	
-	// Method khusus untuk mengecek apakah method ConvertNum berfungsi dengan baik.
+	// Method khusus untuk mengecek apakah method ConvertNum berfungsi dengan baik
+	// atau tidak.
 	private static void ConvertNum_Test(String a, String b, String c, String d) {
 		
 		System.out.println("[Test Purpose Only]\n");
@@ -385,7 +384,7 @@ public class KonversiBilangan {
 		System.out.printf("%s [10] = %s [16]\n", c, konversi);
 		System.out.print("\n");
 		
-		// Dari heksadesial ke basis apa saja.
+		// Dari heksadesimal ke basis apa saja.
 		d = d.toUpperCase();
 		konversi = ConvertNum(d, 16, 2);
 		System.out.printf("%s [16] = %s [2]\n", d, konversi);
