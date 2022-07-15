@@ -1,5 +1,5 @@
 // Nama package ngikut punyamu ya.
-package com.mengcoba;
+package <nama_package>;
 import java.util.*;
 import java.lang.Math;
 
