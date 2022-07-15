@@ -1,12 +1,11 @@
 // Nama package ngikut punyamu ya.
-package com.mengcoba;
+package <nama_package>;
+import java.util.*;
+import java.lang.Math;
 
 /* Program Invers Matriks oleh AFP.
  * Dibuat pada tanggal 25/06/2022, ditulis menggunakan Java. 
  */
- 
-import java.util.*;
-import java.lang.Math;
 
 public class InversMatriks {
 
@@ -59,9 +58,9 @@ public class InversMatriks {
 
                 System.out.print(arrayInput[i][j]);
 				
-			if (j < kolom - 1) {
-				System.out.print(" ");
-			}
+		    if (j < kolom - 1) {
+			System.out.print(" ");
+		    }
 
             }
 
@@ -87,9 +86,9 @@ public class InversMatriks {
 
                 System.out.print(arrayInput[i][j]);
 				
-			if (j < kolom - 1) {
-				System.out.print(" ");
-			}
+		    if (j < kolom - 1) {
+			System.out.print(" ");
+		    }
 
             }
 
