@@ -1,11 +1,10 @@
 // Nama package ngikut punyamu ya.
-package com.mengcoba;
+package <nama_package>;
+import java.util.*;
 
 /* Program Persamaan oleh AFP.
  * Dibuat pada tanggal 13/07/2022, ditulis menggunakan Java. 
  */
-
-import java.util.*;
 
 public class Persamaan {
     
@@ -421,9 +420,10 @@ public class Persamaan {
             hasilStr = Integer.toString(hasilInt);
         
         } else {
-            if (abs1 == 1) {
+            if (abs1 == 0) {
+                hasilStr = "0";
+            } else if (abs1 == 1) {
                 hasilStr = bil1 + "/" + bil2;
-
             } else {
                 fpb = LcmGcd(tempNum, 2);
                 bil1 /= fpb;
