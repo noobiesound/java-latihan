@@ -53,6 +53,7 @@ public class KonversiBilangan {
 	
 	}
 
+	// Method utama untuk konversi bilangan.
 	private static String ConvertNum(String bil, int base1, int base2) {
 		
 		// Bilangan basis-10 (desimal) bisa langsung diproses.
