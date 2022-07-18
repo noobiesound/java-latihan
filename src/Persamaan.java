@@ -58,7 +58,7 @@ public class Persamaan {
 
                 String[] frag1 = SplitByOp(ruas[1]);
 
-                // Jika ruas kanan terdapat variabel juga, maka
+                // Jika ruas kiri terdapat variabel juga, maka
                 // kemungkinannya berbentuk ax + b = cx + d.
                 if (FindVar(ruas[0]) > 0) {
 
@@ -263,8 +263,7 @@ public class Persamaan {
 
             if (start == bagi) {
                 temp[i] = start;
-                i++;
-				
+                i++;		
             }
 
             start++;
@@ -297,7 +296,6 @@ public class Persamaan {
         // Proses pemfaktoran setiap angka, faktor dari masing-masing
         // angka akan disimpan dalam array tersendiri.
         do {
-
             j = 0;
 
             while (angka[i] > 1) {
@@ -313,7 +311,6 @@ public class Persamaan {
             }
             
             i++;
-
         } while (i < p_Angka);
 
         // Proses menghitung KPK dan FPB.
@@ -325,8 +322,7 @@ public class Persamaan {
         int gcd = 1;
 
         while (j < arrayPrima.length) {
-	
-            maxIndex = 0;
+			maxIndex = 0;
 			minIndex = 0;
 			
             for (i = 1; i < p_Angka; i++) {
