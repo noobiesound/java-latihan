@@ -1,7 +1,12 @@
 import java.util.Scanner;
 import java.lang.Math;
 
+/* Program Kalkulator Tone Equal Temperament oleh AFP.
+ * Dibuat pada tanggal 12/01/2023, ditulis menggunakan Java.
+ */
+
 public class ToneEqualTemperament {
+    // Main method.
     public static void main(String[] args) {
         int tet, oct;
         Scanner scan = new Scanner(System.in);
@@ -20,9 +25,11 @@ public class ToneEqualTemperament {
         System.out.printf("(With N0 = C%d and N%d = C%d)", oct, tet, oct + 1);
         scan.close();
     }
-
+	
+    // Making C4 frequency as a constant.
     public static final double freqC4 = fracPow(2, -3, 4) * 440;
 
+    // Method for displaying list of frequencies with given TET value.
     public static void TETFreqList (int input, int oct) {
         double freq = 0f;
         double cent = 0f;
@@ -33,7 +40,10 @@ public class ToneEqualTemperament {
             System.out.printf("N%d = %.2f Hz >>> Distance (from C%d) = %.2f cent(s)\n", i, freq, oct, cent);
         }
     }
-
+	
+    // Method for performing exponential operation with fraction as
+    // its exponent, since Java doesn't support for this kind of
+    // operation.
     private static double fracPow(double a, double m, double n) {
         if (m == 0) {
             if ((a == 0) || (n == 0))  {
@@ -49,7 +59,8 @@ public class ToneEqualTemperament {
             return root(Math.pow(a, m), n);
         }
     }
-
+	
+    // Method for performing n-th root. 
     private static double root(double a, double n) {
         if (n <= 0) {
         	return -1;
@@ -70,7 +81,8 @@ public class ToneEqualTemperament {
 
         return x2;
     }
-
+	
+    // Method for clearing screen. Optional.
     public static void clrscr () {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
