@@ -62,11 +62,10 @@ public class DateCalcNew {
 	
 	// Method for parsing the strings.
 	private static int[] parseDate(String date) {
-		int i;
 		int[] res = new int[3];
 		String[] dateStr = date.split("/");
 		
-		for (i = 0; i < 3; i++) {
+		for (int i = 0; i < 3; i++) {
 			res[i] = Integer.parseInt(dateStr[i]);
 		}
 		return res;
@@ -110,7 +109,7 @@ public class DateCalcNew {
 		return res;
 	}
 	
-	// Method for finding determining the day.
+	// Method for determining the day.
 	private static String getDay(String date) {
 		String seed = "1/1/2023";
 		String[] seedStr = seed.split("/");
@@ -241,7 +240,6 @@ public class DateCalcNew {
 				
 				while (days >= getMaxDays(m2, y2)) {
 					days -= getMaxDays(m2, y2);
-					
 					if ((m2 - 1) < 1) {
 						y2--;
 						m2 = 12;
