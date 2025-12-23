@@ -4,28 +4,38 @@
 import java.lang.Math;
 
 public class DateCalcNew {
-	// Main method (for testing purposes).
+	// Main method (for demo).
 	public static void main(String[] args) {
-		String date1 = "1/8/1945";
+		// A. Calculating the gap of two dates.
+		title("Gap Between Two Dates");
+		String date1 = "23/10/2018";
 		formatDate(date1);
 		String date2 = "21/12/2025";
 		formatDate(date2);
 		
 		int gap = getGap(date1, date2);
+		addSpace(1);
 		System.out.printf("Gap = %,d day(s)\n", gap);
 		detailedInfo(gap);
+		addSpace(4);
+		
+		// B. Jumping into a new date.
+		title("Jump Forward/Backward");
+		String date3 = "15/06/2002";
+		formatDate(date3);
+		int jump = 8590;
+		System.out.printf("Jump = %,d day(s)\n", jump);
+		String date4 = dateJump(date3, jump);
+		formatDate(date4);
 	}
 	
-	// Method for checking leap years.
+	// Method for checking whether it's a leap year or not.
 	private static boolean leapConf(int year) {
 		boolean conf = false;
-		
-		if (year % 400 == 0) {
-			conf = true;
-		} else if (year % 100 != 0) {
+		if (year % 400 == 0) conf = true;
+		else if (year % 100 != 0) {
 			if (year % 4 == 0) conf = true;
 		}
-		
 		return conf;
 	}
 	
@@ -40,7 +50,7 @@ public class DateCalcNew {
 		}
 	}
 	
-	// Method for calculating sum of days.
+	// Method for calculating sum of days in a certain range.
 	private static int getDaySum(int m1, int m2, int y) {
 		int res = 0;
 		if (m1 == m2) return getMaxDays(m1, y);
@@ -62,7 +72,7 @@ public class DateCalcNew {
 		return res;
 	}
 	
-	// Method for calculating the gaps, given two dates.
+	// Method for calculating the gap, given two dates.
 	private static int getGap(String date1, String date2) {
 		int[] parsedDate1 = parseDate(date1);
 		int[] parsedDate2 = parseDate(date2);
@@ -100,7 +110,7 @@ public class DateCalcNew {
 		return res;
 	}
 	
-	// Method for getting the day.
+	// Method for finding determining the day.
 	private static String getDay(String date) {
 		String seed = "1/1/2023";
 		String[] seedStr = seed.split("/");
@@ -180,5 +190,85 @@ public class DateCalcNew {
 		}
 		
 		System.out.printf("%s, %s %s, %d\n", day, dateStr[1], dateStr[0], y);
+	}
+	
+	// Method for jumping into a new date.
+	private static String dateJump(String date, int days) {
+		if (days == 0) return date;
+		
+		int[] parsedDate = parseDate(date);
+		int d1 = parsedDate[0]; int d2 = d1;
+		int m1 = parsedDate[1]; int m2 = m1;
+		int y1 = parsedDate[2]; int y2 = y1;
+		String newDate = null;
+		boolean forward = true;
+		
+		if (days < 0) {
+			days = Math.abs(days);
+			forward = false;
+		}
+		
+		if (forward) {
+			if (days <= (getMaxDays(m1, y1) - d1)) d2 = d1 + days;
+			else {
+				days -= getMaxDays(m2, y2) - d2;
+				d2 = 1;
+				if ((m2 + 1) > 12) {
+					y2++;
+					m2 = 1;
+				} else m2++;
+				
+				while (days > getMaxDays(m2, y2)) {
+					days -= getMaxDays(m2, y2);
+					if ((m2 + 1) > 12) {
+						y2++;
+						m2 = 1;
+					} else m2++;
+				}
+				
+				d2 = days;
+			}
+		} else {
+			if (days < d1) d2 = d1 - days;
+			else {
+				days -= d2;
+				
+				if ((m2 - 1) < 1) {
+					y2--;
+					m2 = 12;
+				} else m2--;
+				d2 = getMaxDays(m2, y2);
+				
+				while (days >= getMaxDays(m2, y2)) {
+					days -= getMaxDays(m2, y2);
+					
+					if ((m2 - 1) < 1) {
+						y2--;
+						m2 = 12;
+					} else m2--;
+				}
+				
+				d2 = getMaxDays(m2, y2) - days;
+			}
+		}
+		
+		newDate = d2 + "/" + m2 + "/" + y2;
+		return newDate;
+	}
+	
+	// Optional: Method for making a title.
+	private static void title(String text) {
+		int len = text.length();
+		
+		System.out.println(text);
+		for (int i = 0; i < len; i++) {
+			System.out.print("=");
+		}
+		System.out.print("\n");
+	}
+	
+	// Optional: Method for adding some space.
+	private static void addSpace(int x) {
+		for (int i = 0; i < x; i++) System.out.print("\n");
 	}
 }
