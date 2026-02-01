@@ -10,7 +10,7 @@ public class Main {
 		
 		addSpace(2);
 		// Zapquake Calculator
-		Zapquake(560, 0.29, 6200);
+		Zapquake(560, 0.29, 5050);
 	}
 	
 	// Method for calculating fireball total damage.
@@ -19,9 +19,9 @@ public class Main {
 		double dmgTotal = dmgFB + eq(countEQ, HPTarget) + dmgGA;
 		
 		if (dmgTotal >= HPTarget) {
-			System.out.printf("Destroyed! (DMG = %,.0f)", dmgTotal);
+			System.out.printf("Can be destroyed. (DMG = %,.0f)", dmgTotal);
 		} else {
-			System.out.printf("Not destroyed! (DMG = %,.0f)", dmgTotal);
+			System.out.printf("Can not be destroyed. (DMG = %,.0f)", dmgTotal);
 		}
 	}
 	
@@ -53,7 +53,7 @@ public class Main {
 		int[] spells = zapQ(dmgL, dmgE, hp);
 		double totalDmg = (spells[0] * dmgL) + eq(spells[1], hp);
 		
-		System.out.printf("Best Combo -> %dL + %dE ", spells[0], spells[1]);
+		System.out.printf("Recommended -> %dL + %dE ", spells[0], spells[1]);
 		System.out.printf("(DMG = %,.0f)", totalDmg);
 	}
 	
@@ -91,12 +91,10 @@ public class Main {
 		i = 0;
 		boolean compareQty;
 		boolean compareDmg;
-		while (i < (n - 1)) {
+		while (i < n - 1) {
 			compareQty = combo[i+1][0] + combo[i+1][1] <= combo[min][0] + combo[min][1];
-			compareDmg = (combo[i+1][0] * dmgL) + eq(combo[i+1][1], hp) > (combo[min][0] * dmgL) + eq(combo[min][1], hp);
-			if (compareQty && compareDmg) {
-				min = i;
-			}
+			compareDmg = (combo[i+1][0] * dmgL) + eq(combo[i+1][1], hp) < (combo[min][0] * dmgL) + eq(combo[min][1], hp);
+			if (compareQty && compareDmg) min = i + 1;
 			i++;
 		}
 		
