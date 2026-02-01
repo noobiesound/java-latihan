@@ -79,7 +79,7 @@ public class Main {
 		for (i = 1; i <= n; i++) {
 			hpTemp = hp;
 			countE = i;
-			hpTemp = hpTemp - eq(countE, hpTemp);
+			hpTemp -= eq(countE, hpTemp);
 			countL = (int) (hpTemp / (double)dmgL);
 			if ((countL * dmgL) < hpTemp) countL++;
 			
